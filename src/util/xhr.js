@@ -28,7 +28,7 @@
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.onreadystatechange = callback;
-        xhr.setRequestHeader("X_REQUESTED_WITH", "XMLHttpRequest")
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
         xhr.send(null);
       },
       "post": function(url, data, callback, type) {
@@ -36,7 +36,7 @@
         var csrf_token = document.getElementById("csrf_token_id").value;
         xhr.open("POST", url, true);
         xhr.onreadystatechange = callback;
-        xhr.setRequestHeader("X_REQUESTED_WITH", "XMLHttpRequest")
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
         xhr.setRequestHeader("X-CSRFToken", csrf_token);
         if( !type || type === "form" ){
           xhr.setRequestHeader("Content-Type", __types.form);
