@@ -1,10 +1,13 @@
 document.addEventListener( "DOMContentLoaded", function( e ){
 
   Butter({
+    config: 'ui-config.json',
     ready: function( butter ){
       var media = butter.media[ 0 ];
 
       function start(){
+        butterReady = true;
+
         var track = media.addTrack( "Track1" );
         media.addTrack( "Track" + Math.random() );
         media.addTrack( "Track" + Math.random() );
@@ -19,7 +22,7 @@ document.addEventListener( "DOMContentLoaded", function( e ){
           }
         });
 
-        butter.tracks[ 2 ].addTrackEvent({ 
+        butter.tracks[ 2 ].addTrackEvent({
           type: "footnote",
           popcornOptions: {
             start: 1,
@@ -28,9 +31,17 @@ document.addEventListener( "DOMContentLoaded", function( e ){
           }
         });
 
+        /**
+         * QUnit Tests for UI go here.
+         **/
+        test( "window.SpecialPowers", function(){
+          ok( "SpecialPowers" in window, "SpecialPowers extension is installed." );
+        });
+
       }
 
       media.onReady( start );
-    } 
-  }); //Butter
+    }
+  });
+
 }, false );
